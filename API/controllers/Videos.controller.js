@@ -2,7 +2,9 @@
 const service = require("../services/Videos.service");
 
 exports.get = (req, res, next) => {
-    const data = {};
+    const data = {
+        id: req.params.id
+    };
 
     service.get(data, (error, results) => {
         if (error) {

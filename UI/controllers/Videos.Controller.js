@@ -29,7 +29,30 @@ app.controller('Videos.Controller', function ($scope, $http, $location, $routePa
     }
 
     $scope.PlayVideoBTNClicked = function(index) {
-        $scope.PreviewImage = $scope.Videos[index].videopath;
+        var body = {
+            data : {}
+        }
+
+        var config = [{
+            headers: {
+              'XXX': 0
+            },     
+        }];
+
+        var url = AppService.API_BASE_URL+'videos/get/id/'+$scope.Videos[index].id+'';
+
+        $http.get(url, body, config).then(function successCallback(response) {
+            if(response.status == 200){
+                console.log(response.data);
+                $scope.PreviewImage = response.data[0].videopath;
+            } else{
+                $scope.Videos = [];
+            }
+        }, function errorCallback(response) {
+            $scope.Videos = [];
+        });
+
+        // $scope.PreviewImage = $scope.Videos[index].videopath;
         $scope.VideoName = $scope.Videos[index].title;
         $scope.VideoDescription = $scope.Videos[index].description;
         // ($scope.Videos[index].description).replace(/(?:\r\n|\r|\n)/g, "<br>");

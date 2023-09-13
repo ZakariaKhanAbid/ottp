@@ -4,6 +4,6 @@ var express = require("express");
 
 var router = express.Router();
 
-router.get("/get", controller.get);
+router.get("/get/id/:id", controller.get);
 
 module.exports = router;

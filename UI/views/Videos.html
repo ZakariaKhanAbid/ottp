@@ -1,0 +1,51 @@
+
+<div class="container-fluid header sticky-top" style="position: fixed; background: #8E44AD; color: #f1f1f1; font-family: 'Comic Sans MS'; font-size: 22px;">
+  <h3>OTT Platform</h3>
+</div>
+
+<div class="container-fluid p-2" style="overflow-y: auto; overflow-x: hidden; margin-bottom: 100px; margin-top: 50px;">
+    <div class="container-fluid">
+        <div class="input-group p-1 mb-2">
+          <input type="text" class="form-control form-control-sm" placeholder="Search Video" ng-model="SearchVideo" ng-keyup="SearchVideoChanged()">
+        </div>
+    </div>
+    <div class="row row-cols-1 row-cols-sm-3 g-2">
+        <div class="col" ng-repeat="item in Videos">
+          <div class="card h-100">
+            <div align="center">
+                <img src="{{'http://localhost:3000/api/downloads?path='+item.thumbnailpath}}" class="card-img-top mt-2" alt="{{item.title}}}"  style="height:200px;width:356px">
+            </div>
+            <div class="card-body">
+              <h6 class="card-title" style="width: 100%;" align="center">{{item.title}}</h6>
+              <small class="card-text">
+                {{item.dscription.length<=50 ? item.description : item.description.substring(0,47)+"..."}}
+              </small>
+            </div>
+            <div class="card-footer" align="center">
+                <button class="btn btn-sm btn-info" ng-model="PlayVideoBTN" ng-click="PlayVideoBTNClicked($index)">Play Video</button>
+            </div>
+          </div>
+        </div>
+    </div>
+</div>
+
+<!-- Cart Modal -->
+<div class="modal fade" id="PlayerModal" tabindex="-1" aria-labelledby="PlayerModalLabel" aria-hidden="true">
+    <div class="modal-dialog  modal-dialog-centered modal-dialog-scrollable modal-fullscreen">
+        <div class="modal-content" style="background-color: #edf2f5;">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="PlayerModalLabel">{{VideoName}}</h1>
+                <button type="button" class="btn-close"  ng-click="ExitVideoBTNClicked()" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" style="width: 100%;" align="center">
+              <div class="container-fluid">
+                <video src="{{'http://localhost:3000/api/downloads?path='+PreviewImage}}" class="object-fit-none" controls="controls" preload="none" autoplay></video>
+              </div>
+              <p>
+                Description:<br><textarea style="background: transparent; border: 0 none;" name="" id="" cols="175" rows="10">{{VideoDescription}}</textarea>
+              </p>
+            </div>
+            
+        </div>
+    </div>
+</div>

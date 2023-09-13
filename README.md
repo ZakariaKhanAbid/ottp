@@ -6,7 +6,7 @@ Use Database:
 
 
 
--Open Xampp localhost (Port: 3306) and creat a database named 'ottp'
+-Open Xampp localhost (Port: 3306) and create a database named 'ottp'
 
 
 

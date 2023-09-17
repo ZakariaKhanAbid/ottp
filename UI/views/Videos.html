@@ -13,7 +13,7 @@
         <div class="col" ng-repeat="item in Videos">
           <div class="card h-100">
             <div align="center">
-                <img src="{{'http://localhost:3000/api/downloads?path='+item.thumbnailpath}}" class="card-img-top mt-2" alt="{{item.title}}}"  style="height:200px;width:356px">
+                <img src="{{'http://localhost:3000/api/downloads?path='+item.thumbnailpath}}" class="card-img-top mt-2" alt="{{item.title}}"  style="height:200px;width:356px">
             </div>
             <div class="card-body">
               <h6 class="card-title" style="width: 100%;" align="center">{{item.title}}</h6>
@@ -29,7 +29,7 @@
     </div>
 </div>
 
-<!-- Cart Modal -->
+
 <div class="modal fade" id="PlayerModal" tabindex="-1" aria-labelledby="PlayerModalLabel" aria-hidden="true">
     <div class="modal-dialog  modal-dialog-centered modal-dialog-scrollable modal-fullscreen">
         <div class="modal-content" style="background-color: #edf2f5;">
